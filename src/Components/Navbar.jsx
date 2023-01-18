@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const stateInp = useSelector((state) => state.handleCart);
-  // console.log(stateInp);
+  const stateInp = useSelector((state) => { return state.rootReducers.handleCart});
+
   const stateF = stateInp.map((x) => x.qty);
   let sum = 0;
 
   // Calculation the sum using forEach
-  stateF.forEach((x) => {
+  stateF && stateF.length && stateF.forEach((x) => {
     sum += x;
   });
 
@@ -141,7 +141,7 @@ export default function Navbar() {
                 <i className="fa fa-user-plus me-1"></i> Register
               </NavLink>
               <NavLink to="/cart" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-shopping-cart me-1"></i> Cart ({sum})
+                <i className="fa fa-shopping-cart me-1"></i> Cart ({stateF.length})
               </NavLink>
             </div>
           </div>

@@ -1,9 +1,10 @@
 const cart = [];
-
+// pure function , 2 paramerts, 1 state, action
 const handleCart = (state = cart, action) => {
   const product = action.payload;
   switch (action.type) {
     case "ADDITEM":
+      //debugger
       //CHECK if product already exist
       const exist = state.find((x) => x.id === product.id);
       if (exist) {
@@ -21,8 +22,6 @@ const handleCart = (state = cart, action) => {
           },
         ];
       }
-      break;
-
     case "DELITEM":
       const exist1 = state.find((x) => x.id === product.id);
       if (exist1.qty === 1) {
@@ -34,7 +33,6 @@ const handleCart = (state = cart, action) => {
       }
     default:
       return state;
-      break;
   }
 };
 

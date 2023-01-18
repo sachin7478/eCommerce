@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 import {Products} from "./Products";
 
@@ -13,8 +13,9 @@ function Prod(props) {
   const [allData,setAllData]=useState([]);
 
   const dispatch = useDispatch();
-  const addProduct = (product) => {
-    dispatch(addCart(product));
+  const addProduct = (data1) => {
+    dispatch(addCart(data1));
+    console.log(data1);
   };
 
   var params = useParams();
