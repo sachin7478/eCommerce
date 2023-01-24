@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { addCart } from "../redux/action";
 import "./products.css";
 import Prod from "./Prod";
+
 
 function Products() {
   const [data, setData] = useState([]);
@@ -31,9 +33,18 @@ function Products() {
         // PrdDetails(data);
       });
   };
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     fetchData();
   }, []);
+
+
+  const addToCart=(item)=>{
+    dispatch(addCart(item));
+    console.log(item);
+  }
 
   return (
     <div>
@@ -80,27 +91,30 @@ function Products() {
                     />
                   </div>
 
-                  <div>
+                  <div style={{minHeight:'70px'}}>
                     <h6 className="card-title text-center" href="/#">
-                      {data.title.substring(0, 12)}
+                      {data.title}
                     </h6>
                     {/* <p>{data.rating.rate}</p> */}
                     {/*correctedError*/}
                   </div>
-                  {/* <NavLink
-                    to={`./${data.id}`}
-                    className="btn btn-outline-secondary text-center"
-                  >
-                    View Details
-                  </NavLink> */}
-                  <NavLink to={`./${data.id}`}>
+                  <div className="row">
+                  <NavLink className="col-7" to={`./${data.id}`}>
+                    <button
+                      className="btn btn-sm btn-outline-dark"
+                      // onClick={() => PrdDetails(data)}
+                    >
+                      View Details
+                    </button>
+                  </NavLink>
                   <button
-          className="btn btn-outline-dark me-2"
-          // onClick={() => PrdDetails(data)}
-        >
-          View Details
-        </button>
-        </NavLink>
+                      className="col-5 btn btn-sm btn-outline-dark"
+                      onClick={() => addToCart(data)}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                  
                 </div>
               </div>
             </div>
