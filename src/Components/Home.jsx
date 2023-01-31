@@ -1,8 +1,17 @@
 import React from "react";
 import "./Home.css";
+import { useEffect} from "react";
+import {useNavigate } from "react-router-dom";
 // import Prod from "./Prod";
 // import image from './main_img.jpg';
 const Home = () => {
+  const usenavigate = useNavigate();
+  useEffect(()=>{
+      let username=sessionStorage.getItem('username');
+      if (username === '' || username === null) {
+          usenavigate('/login');
+      }
+  },[]);
   return (
     <div>
       <div className="hero">
@@ -30,6 +39,7 @@ const Home = () => {
       </div>
       {/* <Display/> */}
     </div>
+
   );
 };
 

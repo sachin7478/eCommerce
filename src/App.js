@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 // import image from './main_img.jpg';
 import Home from "./Components/Home";
@@ -8,6 +8,8 @@ import Products from "./Components/Products";
 
 import Prod from "./Components/Prod";
 import Cart from "./Components/Cart";
+import Login from './Login';
+import Register from './Register';
 // test
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Prod />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
         
       </Routes>
       {/* <ProductList></ProductList> */}

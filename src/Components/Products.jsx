@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 import "./products.css";
-import Prod from "./Prod";
+import {useNavigate } from "react-router-dom";
 
 
 function Products() {
+  const usenavigate = useNavigate();
+  useEffect(()=>{
+      let username=sessionStorage.getItem('username');
+      if (username === '' || username === null) {
+          usenavigate('/login');
+      }
+  },[]);
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
 

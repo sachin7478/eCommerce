@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { delCart } from "../redux/action/index";
+import { addCart } from "../redux/action/index";
 
 import "./Cart.css";
 
@@ -31,7 +32,13 @@ const CartItems = (props) => {
     dispatch(delCart(props.item));
   };
 
+  const addProduct = () => {
+    dispatch(addCart(props.item));
+  };
+
   const { title, image, price } = props.item;
+  //const cartQuantity=useSelector((state)=>state.rootReducers.);
+
   return (
     <>
       <div className="col-12 p-2">
@@ -70,6 +77,16 @@ const CartItems = (props) => {
                 {price}
               </p>
             </div>
+
+            <button type="button"
+             onClick={addProduct}
+             className="btn btn-outline-secondary">INCREMENT (+)</button>
+
+            <button type="button"
+             onClick={removeProduct}
+             className="btn btn-outline-secondary">DECREMENT (-)</button>
+
+            <p>"Quantity :"{}</p>
           </div>
         </div>
       </div>

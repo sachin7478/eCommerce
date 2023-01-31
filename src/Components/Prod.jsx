@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
-import {Products} from "./Products";
 
 import "./Prod.css";
 import { NavLink } from "react-router-dom";

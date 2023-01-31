@@ -143,6 +143,8 @@ export default function Navbar() {
               <NavLink to="/cart" className="btn btn-outline-dark ms-2">
                 <i className="fa fa-shopping-cart me-1"></i> Cart ({stateF.length})
               </NavLink>
+              <NavLink to="/login" className="btn btn-outline-dark ms-2"> LogOut
+              </NavLink>
             </div>
           </div>
         </div>
