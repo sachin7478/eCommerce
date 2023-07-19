@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { delCart } from "../redux/action/index";
 import { addCart } from "../redux/action/index";
@@ -6,9 +6,18 @@ import { addCart } from "../redux/action/index";
 import "./Cart.css";
 
 function Cart() {
-  const cartProducts = useSelector((state) => {
+  const cart = useSelector((state) => {
     return state.rootReducers.handleCart;
   });
+
+  const [cartProducts, setCart] = useState(cart);
+  useEffect(
+    () => { setCart(() => { return JSON.parse(localStorage.getItem('cart')) }) }
+  , [])
+
+  useEffect(
+    () => { setCart(() => { return cart }) }
+  , [cart])
 
   return (
     <>
@@ -79,14 +88,14 @@ const CartItems = (props) => {
             </div>
 
             <button type="button"
-             onClick={addProduct}
-             className="btn btn-outline-secondary">INCREMENT (+)</button>
+              onClick={addProduct}
+              className="btn btn-outline-secondary">INCREMENT (+)</button>
 
             <button type="button"
-             onClick={removeProduct}
-             className="btn btn-outline-secondary">DECREMENT (-)</button>
+              onClick={removeProduct}
+              className="btn btn-outline-secondary">DECREMENT (-)</button>
 
-            <p>"Quantity :"{}</p>
+            <p>"Quantity :"{ }</p>
           </div>
         </div>
       </div>
